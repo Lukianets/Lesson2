@@ -20,13 +20,11 @@
 
 -(NSInteger) numberOfSectionsInTabelView: (UITableView *) tabelView
 {
-    //Количество секций
     return 1;
 }
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //Количество рядков
     return tableViewContent.count;
 }
 
@@ -46,9 +44,9 @@
 }
 
 
--(void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *selectedIndexPath = [NSString stringWithFormat:@"Podcast %i was selected", [indexPath row]];
+    NSString *selectedIndexPath = [NSString stringWithFormat:@"Podcast %i was selected", [indexPath row]+1];
     UIAlertView *selectedCellAlert = [[UIAlertView alloc]  initWithTitle:@"Podcast Selected" message:selectedIndexPath delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
     [selectedCellAlert show];
 }
@@ -58,7 +56,13 @@
 {
     [super viewDidLoad];
     
-    tableViewContent = [[NSMutableArray alloc] initWithObjects:@"Podcast 1", @"Podcast 2", @"Podcast 3", @"Podcast 4", @"Podcast 5", @"Podcast 6", nil];
+    tableViewContent = [[NSMutableArray alloc] init ];
+    
+    for (int i = 0; i < 7; i++) {
+        [tableViewContent addObject:[NSString stringWithFormat:@"Podcast %i", i+1]];
+    }
+    
+    //tableViewContent = [[NSMutableArray alloc] initWithObjects:@"Podcast 1", @"Podcast 2", @"Podcast 3", @"Podcast 4", @"Podcast 5", @"Podcast 6", nil];
 	
 }
 
